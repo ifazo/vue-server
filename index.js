@@ -31,7 +31,7 @@ const authMiddleware = (req, res, next) => {
 };
 
 async function run() {
-  const db = client.db("vue_db");
+  const db = client.db(process.env.MONGODB_DB);
   const userCollection = db.collection("users");
   const productCollection = db.collection("products");
   const categoryCollection = db.collection("categories");
@@ -339,7 +339,7 @@ async function run() {
 
 run().catch(console.dir);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log(`Vue server listening on port ${port}`);
